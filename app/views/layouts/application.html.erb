@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+   <div id="container">
+     <div id = "header">
+      <div id="title"><a href="/">髭ログ</a></div>
+      <div id="header-menu">
+        <% if session[:user_id] != nil then %>
+         <span><a href= "/posts/new">New post></a></span>
+        <%else%>
+         <span><a href="/users/login">Log in</a></span>
+         <span><a href="/users/new">Sign up</a></span>
+        <%end%>
+     </div>
+    </div>
+    <div id="main-content">
+      <%= yield %>
+    </div>
+   </div>
+  </body>
+</html>
